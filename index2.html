@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha Iota Short Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #003e6b;
+      --accent: #0077cc;
+      --light-bg: #f4f6f9;
+      --deep-bg: #eaf1f8;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 3rem 1rem 5rem;
+      text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1603570417740-0b4aa3b5f5fd');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .section-title {
+      margin-top: -3rem;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .category-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin: 1rem auto;
+      max-width: 960px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    .category-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .course-list {
+      display: none;
+      margin-top: 1rem;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .course-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      transition: all 0.3s;
+    }
+
+    .course-btn:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .info-banner {
+      background-color: var(--deep-bg);
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    .features-section {
+      background: white;
+      padding: 3rem 1rem;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fas fa-graduation-cap"></i> Alpha Iota Short Courses</h1>
+    <p>Empowering your growth through Alpha Learning — our internal online learning hub.</p>
+  </header>
+
+  <div class="container section-title">
+    <h2>Explore Our Learning Categories</h2>
+  </div>
+
+  <div class="container">
+    <div class="category-card" onclick="toggleCourses('comm')">
+      <h3><i class="fas fa-comments"></i> Collaboration & Communication</h3>
+      <div id="comm" class="course-list">
+        <button class="course-btn" onclick="redirectToCourse('communication-skills.html', event)">Communication Skills</button>
+        <button class="course-btn" onclick="redirectToCourse('teamwork.html', event)">Teamwork</button>
+        <button class="course-btn" onclick="redirectToCourse('build-trust.html', event)">Build Trustful Relationships</button>
+        <button class="course-btn" onclick="redirectToCourse('influencing.html', event)">Influencing</button>
+        <button class="course-btn" onclick="redirectToCourse('stakeholder-management.html', event)">Stakeholder Management</button>
+      </div>
+    </div>
+
+    <div class="category-card" onclick="toggleCourses('prod')">
+      <h3><i class="fas fa-chart-line"></i> Execution & Productivity</h3>
+      <div id="prod" class="course-list">
+        <button class="course-btn" onclick="redirectToCourse('work-and-planning.html', event)">Work and Planning</button>
+        <button class="course-btn" onclick="redirectToCourse('productivity-efficiency.html', event)">Productivity and Efficiency</button>
+        <button class="course-btn" onclick="redirectToCourse('performance-feedback.html', event)">Performance Feedback</button>
+        <button class="course-btn" onclick="redirectToCourse('defining-capability.html', event)">Defining Capability</button>
+        <button class="course-btn" onclick="redirectToCourse('continuous-improvement.html', event)">Continuous Improvement</button>
+      </div>
+    </div>
+
+    <div class="category-card" onclick="toggleCourses('prob')">
+      <h3><i class="fas fa-lightbulb"></i> Problem Solving & Innovation</h3>
+      <div id="prob" class="course-list">
+        <button class="course-btn" onclick="redirectToCourse('problem-solving.html', event)">Problem Solving</button>
+        <button class="course-btn" onclick="redirectToCourse('decision-making.html', event)">Decision Making</button>
+        <button class="course-btn" onclick="redirectToCourse('innovation.html', event)">Innovation</button>
+        <button class="course-btn" onclick="redirectToCourse('frame-opportunity.html', event)">Frame Opportunity</button>
+      </div>
+    </div>
+
+    <div class="category-card" onclick="toggleCourses('lead')">
+      <h3><i class="fas fa-user-tie"></i> Leadership & Change Management</h3>
+      <div id="lead" class="course-list">
+        <button class="course-btn" onclick="redirectToCourse('leadership.html', event)">Leadership</button>
+        <button class="course-btn" onclick="redirectToCourse('managing-change.html', event)">Managing & Enabling Change</button>
+        <button class="course-btn" onclick="redirectToCourse('high-performing-team.html', event)">Developing High Performing Team</button>
+      </div>
+    </div>
+
+    <div class="category-card" onclick="toggleCourses('vision')">
+      <h3><i class="fas fa-binoculars"></i> Vision & Strategy</h3>
+      <div id="vision" class="course-list">
+        <button class="course-btn" onclick="redirectToCourse('strategic-planning.html', event)">Strategic Planning</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-banner">
+    <h4>What is Alpha Learning?</h4>
+    <p>Alpha Learning is our in-house training facility where you can develop competencies through quick, focused content — aligned with how we work and grow.</p>
+  </div>
+
+  <div class="features-section container">
+    <h2>How We Support Your Growth</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <i class="fas fa-chalkboard-teacher feature-icon"></i>
+        <h5>Guided Courses</h5>
+        <p>All content is curated with short, practical activities for better learning retention.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <i class="fas fa-laptop-code feature-icon"></i>
+        <h5>Learn Anywhere</h5>
+        <p>Whether at work or remote, you can access modules anytime — just enter the access code.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <i class="fas fa-user-check feature-icon"></i>
+        <h5>Role-Aligned Topics</h5>
+        <p>Courses support day-to-day roles across departments — from strategy to service.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Course Access</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="password" id="passcodeInput" placeholder="Enter passcode to continue" class="form-control mb-3">
+          <div id="passcodeError" class="text-danger" style="display:none;">Incorrect passcode. Try again.</div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="submitPasscode()">Unlock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Alpha Iota | Internal Use Only | Powered by Project C.O.R.E.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let selectedUrl = '';
+
+    function toggleCourses(id) {
+      const courseDiv = document.getElementById(id);
+      courseDiv.style.display = courseDiv.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function redirectToCourse(htmlFile, event) {
+      event.stopPropagation();
+      selectedUrl = htmlFile;
+      document.getElementById("passcodeInput").value = '';
+      document.getElementById("passcodeError").style.display = 'none';
+      const modal = new bootstrap.Modal(document.getElementById('courseModal'));
+      modal.show();
+    }
+
+    function submitPasscode() {
+      const input = document.getElementById("passcodeInput").value.trim();
+      if (input === "alpha2025") {
+        window.location.href = selectedUrl;
+      } else {
+        document.getElementById("passcodeError").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
