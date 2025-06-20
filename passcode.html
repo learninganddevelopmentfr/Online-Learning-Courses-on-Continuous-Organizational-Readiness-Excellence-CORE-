@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alpha Iota Course Access</title>
+  <style>
+    :root {
+      --primary: #004aad;
+      --accent: #1d9bf0;
+      --bg: #f1f5f9;
+      --white: #ffffff;
+      --error: #e74c3c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      background-color: var(--bg);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+
+    .card input[type="password"] {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #dcdcdc;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: border 0.3s;
+    }
+
+    .card input[type="password"]:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.2);
+    }
+
+    .card button {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .card button:hover {
+      background-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Enter Course Access Code</h2>
+    <input type="password" id="courseCode" placeholder="Enter passcode" />
+    <div class="error-message" id="error">❌ Incorrect code. Please try again.</div>
+    <button onclick="checkAccess()">Unlock</button>
+  </div>
+
+  <script>
+    const PASSCODE = "alpha2025";
+    function checkAccess() {
+      const input = document.getElementById("courseCode").value.trim();
+      const error = document.getElementById("error");
+      if (input === PASSCODE) {
+        window.location.href = "index.html";
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
