@@ -12,25 +12,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
   <!-- Animate.css -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
- 
+
   <style>
-    .home-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;          /* change to `left: 1rem;` if you prefer top-left */
-    background: white;
-    color: var(--primary);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
-  }
-  .home-btn:hover {
-    background: var(--accent);
-    color: #fff;
-  }
     :root {
       --primary: #003e6b;
       --accent: #0077cc;
@@ -39,50 +22,82 @@
       --card-bg: #ffffff;
       --shadow-color: rgba(0, 62, 107, 0.15);
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, var(--light-bg), var(--deep-bg));
       color: #333;
       overflow-x: hidden;
     }
+
     header {
       position: relative;
       background-color: var(--primary);
       color: white;
       text-align: center;
-      padding: 6rem 1rem;
+      padding: 6rem 1rem 4rem 1rem;
       filter: brightness(1.05);
     }
+
     header::after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 100px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none"><path d="M0,0 C600,100 600,0 1200,100 L1200,0 L0,0 Z" fill="white"/></svg>') no-repeat bottom;
-      background-size: cover;
+      display: none;
     }
+
     header h1 {
       font-size: 3rem;
       font-weight: 700;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
     }
+
     header p {
       font-size: 1.2rem;
       margin-top: 0.5rem;
       font-style: italic;
     }
-    .section-title {
-      margin-top: -4rem;
-      text-align: center;
-      padding-top: 4rem;
+
+    .header-nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
+
+    .header-nav a {
+      color: #ffffffcc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease, border-bottom 0.3s ease, background 0.3s ease;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.3rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    .header-nav a:hover {
+      color: #fff;
+      border-bottom: 2px solid var(--accent);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 4rem 1rem 2rem 1rem;
+      background: #fff;
+      border-radius: 1rem;
+      margin: 2rem auto;
+      max-width: 700px;
+      box-shadow: 0 10px 30px rgba(0,62,107,0.1);
+    }
+
     .section-title h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
       color: var(--primary);
+      margin-bottom: 0.5rem;
     }
+
     .category-card {
       background: var(--card-bg);
       border-radius: 1rem;
@@ -93,20 +108,24 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
     }
+
     .category-card:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 30px 60px var(--shadow-color);
     }
+
     .category-card h3 {
       font-size: 1.75rem;
       color: var(--primary);
       margin-bottom: 0.8rem;
     }
+
     .course-list {
       display: none;
       margin-top: 1rem;
       animation: fadeIn 0.5s ease-in-out;
     }
+
     .course-btn {
       background: var(--primary);
       color: white;
@@ -118,34 +137,41 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .course-btn:hover {
       background: var(--accent);
       transform: translateY(-3px);
       box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     .info-banner {
       background: var(--deep-bg);
       padding: 4rem 1rem;
       text-align: center;
     }
+
     .features-section {
       background: white;
       padding: 4rem 1rem;
     }
+
     .feature-icon {
       font-size: 3.5rem;
       color: var(--primary);
       margin-bottom: 1rem;
       animation: pulse 2s infinite;
     }
+
     @keyframes pulse {
       0%,100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
+
     .footer {
       background: var(--primary);
       color: white;
@@ -159,14 +185,23 @@
 <body>
 
   <header data-aos="fade-down">
-    <h1 class="animate__animated animate__fadeInDown"><i class="fas fa-graduation-cap"></i> Alpha Iota Short Courses</h1>
-    <p class="animate__animated animate__fadeInUp">The Alpha Iota CORE Library - Our very own internal online short courses site</p>
+    <h1 class="animate__animated animate__fadeInDown">
+      <i class="fas fa-graduation-cap"></i> Alpha Iota Short Courses
+    </h1>
+    <p class="animate__animated animate__fadeInUp">
+      The Alpha Iota CORE Library - Our very own internal online short courses site
+    </p>
+    <nav class="header-nav">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="#about">About CORE</a>
+      <a href="#features">Features</a>
+      <a href="#courses">Courses</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
-<a href="index.html" class="home-btn">
-  <i class="fas fa-home"></i> Home
-</a>
-  <div class="container section-title" data-aos="zoom-in">
-    <h2>Choose your assigned short course</h2>
+
+  <div class="container section-title" data-aos="zoom-in" id="courses">
+    <h2>Choose Your Assigned Short Course</h2>
   </div>
 
   <div class="container">
@@ -225,66 +260,44 @@
     </div>
   </div>
 
-  <!-- Info Banner -->
-  <div class="info-banner" data-aos="fade-in" data-aos-delay="200">
+  <div class="info-banner" data-aos="fade-in" data-aos-delay="200" id="about">
     <h4>What is Project C.O.R.E?</h4>
     <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-    <strong>Project CORE</strong> is a <strong>team-led initiative by HR-LOE</strong> designed to empower our organization and its members through self-paced online short courses.
-  </p>
-  <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-    It supports individual career growth by focusing on <em>modern-day soft skills</em>, encouraging <strong>learning by doing</strong>, and nurturing <strong>higher-order thinking</strong>.
-  </p>
-  <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-    Through interactive exercises and self-discovery tools, learners can actively shape their professional development journey at their own pace.
-  </p>
-
-  <!-- Features Section -->
-  <div class="features-section container" data-aos="fade-up">
-  <h2 class="text-center mb-5">What we focus on</h2>
-  <div class="row text-center">
-    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
-      <i class="fas fa-lightbulb feature-icon"></i>
-      <h5>Self-Paced Learning</h5>
-      <p>Access short online courses anytime, anywhere, at your own pace.</p>
-    </div>
-    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
-      <i class="fas fa-brain feature-icon"></i>
-      <h5>Higher-Order Thinking</h5>
-      <p>Sharpen decision-making, critical thinking, and problem-solving skills.</p>
-    </div>
-    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
-      <i class="fas fa-user-graduate feature-icon"></i>
-      <h5>Career-Aligned Growth</h5>
-      <p>Build relevant soft skills that support your professional journey.</p>
-    </div>
+      <strong>Project CORE</strong> is a <strong>team-led initiative by HR-LOE</strong> designed to empower our organization and its members through self-paced online short courses.
+    </p>
+    <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
+      It supports individual career growth by focusing on <em>modern-day soft skills</em>, encouraging <strong>learning by doing</strong>, and nurturing <strong>higher-order thinking</strong>.
+    </p>
+    <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
+      Through interactive exercises and self-discovery tools, learners can actively shape their professional development journey at their own pace.
+    </p>
   </div>
-</div>
 
-  <!-- Course Access Modal -->
-  <div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Course Access</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <input type="password" id="passcodeInput" placeholder="Enter passcode" class="form-control mb-3">
-          <div id="passcodeError" class="text-danger" style="display:none;">Incorrect passcode. Try again.</div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" onclick="submitPasscode()">Unlock</button>
-        </div>
+  <div class="features-section container" data-aos="fade-up">
+    <h2 class="text-center mb-5">What we focus on</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-lightbulb feature-icon"></i>
+        <h5>Self-Paced Learning</h5>
+        <p>Access short online courses anytime, anywhere, at your own pace.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-brain feature-icon"></i>
+        <h5>Higher-Order Thinking</h5>
+        <p>Sharpen decision-making, critical thinking, and problem-solving skills.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-user-graduate feature-icon"></i>
+        <h5>Career-Aligned Growth</h5>
+        <p>Build relevant soft skills that support your professional journey.</p>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer" data-aos="fade-up" data-aos-delay="200">
     <p>&copy; 2025 Alpha Iota | Internal Use Only | Powered by Project C.O.R.E.</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
@@ -297,18 +310,7 @@
     }
     function redirectToCourse(htmlFile, event) {
       event.stopPropagation();
-      selectedUrl = htmlFile;
-      document.getElementById('passcodeInput').value = '';
-      document.getElementById('passcodeError').style.display = 'none';
-      new bootstrap.Modal(document.getElementById('courseModal')).show();
-    }
-    function submitPasscode() {
-      const input = document.getElementById('passcodeInput').value.trim();
-      if (input === 'alpha2025') {
-        window.location.href = selectedUrl;
-      } else {
-        document.getElementById('passcodeError').style.display = 'block';
-      }
+      window.location.href = htmlFile;
     }
   </script>
 </body>
