@@ -8,7 +8,7 @@
     :root {
       --primary: #004aad;
       --accent: #1d9bf0;
-      --bg: #f1f5f9;
+      --bg-gradient: linear-gradient(135deg, #e0f2ff, #f1f5f9);
       --white: #ffffff;
       --error: #e74c3c;
     }
@@ -21,8 +21,8 @@
 
     body {
       font-family: 'Segoe UI', 'Roboto', sans-serif;
-      background-color: var(--bg);
-      height: 100vh;
+      background: var(--bg-gradient);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,57 +30,87 @@
     }
 
     .card {
-      background-color: var(--white);
-      padding: 2.5rem 2rem;
+      background: var(--white);
+      padding: 3rem 2rem;
       border-radius: 1rem;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
       width: 100%;
       max-width: 420px;
       text-align: center;
-      animation: fadeIn 0.5s ease-out;
+      animation: fadeIn 0.6s ease-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .card h2 {
+    .logo-circle {
+      width: 70px;
+      height: 70px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .logo-circle::before {
+      content: "🎓";
+    }
+
+    .card h1 {
+      font-size: 1.8rem;
       color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
     }
 
     .card input[type="password"] {
       width: 100%;
-      padding: 0.9rem;
+      padding: 1rem;
       border: 1px solid #dcdcdc;
       border-radius: 8px;
       font-size: 1rem;
-      margin-bottom: 1rem;
-      transition: border 0.3s;
+      margin-bottom: 0.5rem;
+      transition: border 0.3s, box-shadow 0.3s;
     }
 
     .card input[type="password"]:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.2);
+      box-shadow: 0 0 0 4px rgba(29, 155, 240, 0.2);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
     }
 
     .card button {
-      background-color: var(--primary);
+      background: var(--primary);
       color: var(--white);
       border: none;
       padding: 0.9rem 2rem;
       border-radius: 8px;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s;
     }
 
     .card button:hover {
-      background-color: var(--accent);
-      transform: translateY(-1px);
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
     .error-message {
@@ -88,25 +118,41 @@
       font-size: 0.9rem;
       margin-top: 0.5rem;
       display: none;
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
     }
 
     @media (max-width: 480px) {
       .card {
         padding: 2rem 1.5rem;
       }
+
+      .card h1 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>Enter Course Access Code</h2>
-    <input type="password" id="courseCode" placeholder="Enter passcode" />
-    <div class="error-message" id="error">❌ Incorrect code. Please try again.</div>
+    <div class="logo-circle"></div>
+    <h1>C.O.R.E Online Courses Library</h1>
+    <p>Please enter the access code to continue</p>
+    <input type="password" id="courseCode" placeholder="Enter passcode" title="You will receive your passcode via Omni-HR. Contact HR-LOE if you need assistance." />
+    <div class="hint">💡 You will receive your passcode via Omni-HR. Contact HR-LOE if you need help.</div>
     <button onclick="checkAccess()">Unlock</button>
+    <div class="error-message" id="error">❌ Incorrect code. Please try again.</div>
   </div>
 
   <script>
-    const PASSCODE = "learningcourses2025.!@12345";
+    const PASSCODE = "alpha2025";
     function checkAccess() {
       const input = document.getElementById("courseCode").value.trim();
       const error = document.getElementById("error");
@@ -114,6 +160,9 @@
         window.location.href = "index2.html";
       } else {
         error.style.display = "block";
+        error.style.animation = "none";
+        void error.offsetWidth;
+        error.style.animation = "shake 0.3s";
       }
     }
   </script>
