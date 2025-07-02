@@ -257,7 +257,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Passcode Modal -->
   <div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -281,6 +281,28 @@
     <p><strong>Project CORE</strong> is a <strong>team-led initiative by HR-LOE</strong> designed to empower our organization and its members through self-paced online short courses.</p>
     <p>It supports individual career growth by focusing on <em>modern-day soft skills</em>, encouraging <strong>learning by doing</strong>, and nurturing <strong>higher-order thinking</strong>.</p>
   </div>
+  <!-- Add this right before your footer -->
+<div class="features-section container" data-aos="fade-up" id="features">
+  <h2 class="text-center mb-5">What We Focus On</h2>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+      <i class="fas fa-lightbulb feature-icon"></i>
+      <h5>Self-Paced Learning</h5>
+      <p>Access short online courses anytime, anywhere, at your own pace.</p>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+      <i class="fas fa-brain feature-icon"></i>
+      <h5>Higher-Order Thinking</h5>
+      <p>Sharpen decision-making, critical thinking, and problem-solving skills.</p>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+      <i class="fas fa-user-graduate feature-icon"></i>
+      <h5>Career-Aligned Growth</h5>
+      <p>Build relevant soft skills that support your professional journey.</p>
+    </div>
+  </div>
+</div>
+
 
   <footer class="footer" data-aos="fade-up" data-aos-delay="200">
     <p>&copy; 2025 Alpha Iota | Internal Use Only | Powered by Project C.O.R.E.</p>
@@ -307,8 +329,8 @@
     }
 
     function submitPasscode() {
-      const pass = document.getElementById('passcodeInput').value.trim();
-      if (pass === 'alpha2025') {
+      const input = document.getElementById('passcodeInput').value.trim();
+      if (input === 'alpha2025') {
         window.location.href = selectedUrl;
       } else {
         document.getElementById('passcodeError').style.display = 'block';
