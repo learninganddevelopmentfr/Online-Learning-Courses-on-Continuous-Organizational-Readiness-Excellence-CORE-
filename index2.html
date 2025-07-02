@@ -79,11 +79,12 @@
       color: #fff;
       border-bottom: 2px solid var(--accent);
       background: rgba(255,255,255,0.1);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     .section-title {
       text-align: center;
-      padding: 4rem 1rem 2rem 1rem;
+      padding: 3rem 1rem 2rem 1rem;
       background: #fff;
       border-radius: 1rem;
       margin: 2rem auto;
@@ -92,10 +93,11 @@
     }
 
     .section-title h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
     }
 
     .category-card {
@@ -201,11 +203,10 @@
   </header>
 
   <div class="container section-title" data-aos="zoom-in" id="courses">
-    <h2>Choose Your Assigned Short Course</h2>
+    <h2>Select Your Learning Path</h2>
   </div>
 
   <div class="container">
-    <!-- Collaboration & Communication -->
     <div class="category-card" onclick="toggleCourses('comm')" data-aos="fade-up" data-aos-delay="100">
       <h3><i class="fas fa-comments"></i> Collaboration & Communication</h3>
       <div id="comm" class="course-list">
@@ -217,7 +218,6 @@
       </div>
     </div>
 
-    <!-- Execution & Productivity -->
     <div class="category-card" onclick="toggleCourses('prod')" data-aos="fade-up" data-aos-delay="200">
       <h3><i class="fas fa-chart-line"></i> Execution & Productivity</h3>
       <div id="prod" class="course-list">
@@ -226,7 +226,6 @@
       </div>
     </div>
 
-    <!-- Problem Solving & Innovation -->
     <div class="category-card" onclick="toggleCourses('prob')" data-aos="fade-up" data-aos-delay="300">
       <h3><i class="fas fa-lightbulb"></i> Problem Solving & Innovation</h3>
       <div id="prob" class="course-list">
@@ -239,7 +238,6 @@
       </div>
     </div>
 
-    <!-- Leadership & Change Management -->
     <div class="category-card" onclick="toggleCourses('lead')" data-aos="fade-up" data-aos-delay="400">
       <h3><i class="fas fa-user-tie"></i> Leadership & Change Management</h3>
       <div id="lead" class="course-list">
@@ -251,7 +249,6 @@
       </div>
     </div>
 
-    <!-- Vision & Strategy -->
     <div class="category-card" onclick="toggleCourses('vision')" data-aos="fade-up" data-aos-delay="500">
       <h3><i class="fas fa-binoculars"></i> Vision & Strategy</h3>
       <div id="vision" class="course-list">
@@ -303,11 +300,11 @@
   <script>
     AOS.init({ duration: 800, once: true });
 
-    let selectedUrl = '';
     function toggleCourses(id) {
       const el = document.getElementById(id);
       el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
+
     function redirectToCourse(htmlFile, event) {
       event.stopPropagation();
       window.location.href = htmlFile;
