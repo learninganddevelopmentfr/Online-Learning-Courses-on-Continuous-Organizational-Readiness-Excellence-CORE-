@@ -257,38 +257,29 @@
     </div>
   </div>
 
-  <div class="info-banner" data-aos="fade-in" data-aos-delay="200" id="about">
-    <h4>What is Project C.O.R.E?</h4>
-    <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-      <strong>Project CORE</strong> is a <strong>team-led initiative by HR-LOE</strong> designed to empower our organization and its members through self-paced online short courses.
-    </p>
-    <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-      It supports individual career growth by focusing on <em>modern-day soft skills</em>, encouraging <strong>learning by doing</strong>, and nurturing <strong>higher-order thinking</strong>.
-    </p>
-    <p style="color: #34495e; line-height: 1.6; font-size: 16px;">
-      Through interactive exercises and self-discovery tools, learners can actively shape their professional development journey at their own pace.
-    </p>
-  </div>
-
-  <div class="features-section container" data-aos="fade-up">
-    <h2 class="text-center mb-5">What we focus on</h2>
-    <div class="row text-center">
-      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
-        <i class="fas fa-lightbulb feature-icon"></i>
-        <h5>Self-Paced Learning</h5>
-        <p>Access short online courses anytime, anywhere, at your own pace.</p>
-      </div>
-      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
-        <i class="fas fa-brain feature-icon"></i>
-        <h5>Higher-Order Thinking</h5>
-        <p>Sharpen decision-making, critical thinking, and problem-solving skills.</p>
-      </div>
-      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
-        <i class="fas fa-user-graduate feature-icon"></i>
-        <h5>Career-Aligned Growth</h5>
-        <p>Build relevant soft skills that support your professional journey.</p>
+  <!-- Modal -->
+  <div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Course Access</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="password" id="passcodeInput" class="form-control mb-2" placeholder="Enter passcode">
+          <div id="passcodeError" class="text-danger" style="display:none;">Incorrect passcode. Try again.</div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="submitPasscode()">Unlock</button>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="info-banner" data-aos="fade-in" data-aos-delay="200" id="about">
+    <h4>What is Project C.O.R.E?</h4>
+    <p><strong>Project CORE</strong> is a <strong>team-led initiative by HR-LOE</strong> designed to empower our organization and its members through self-paced online short courses.</p>
+    <p>It supports individual career growth by focusing on <em>modern-day soft skills</em>, encouraging <strong>learning by doing</strong>, and nurturing <strong>higher-order thinking</strong>.</p>
   </div>
 
   <footer class="footer" data-aos="fade-up" data-aos-delay="200">
@@ -300,6 +291,8 @@
   <script>
     AOS.init({ duration: 800, once: true });
 
+    let selectedUrl = '';
+
     function toggleCourses(id) {
       const el = document.getElementById(id);
       el.style.display = (el.style.display === 'block') ? 'none' : 'block';
@@ -307,7 +300,19 @@
 
     function redirectToCourse(htmlFile, event) {
       event.stopPropagation();
-      window.location.href = htmlFile;
+      selectedUrl = htmlFile;
+      document.getElementById('passcodeInput').value = '';
+      document.getElementById('passcodeError').style.display = 'none';
+      new bootstrap.Modal(document.getElementById('courseModal')).show();
+    }
+
+    function submitPasscode() {
+      const pass = document.getElementById('passcodeInput').value.trim();
+      if (pass === 'alpha2025') {
+        window.location.href = selectedUrl;
+      } else {
+        document.getElementById('passcodeError').style.display = 'block';
+      }
     }
   </script>
 </body>
